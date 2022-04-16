@@ -6,7 +6,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     const salt = bcrypt.genSaltSync()
-    const {email, password} = req.body
+    const { email, password } = req.body
 
     let user
 
@@ -19,14 +19,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
     } catch (e) {
         res.status(401)
-        res.json({error: 'User already exists' })
+        res.json({ error: 'User already exists' })
         return
     }
 
-    const token = jwt.sign({
-        email: user.email,
-        id: user.id,
-        time: Date.now(),
+    const token = jwt.sign(
+        {
+            email: user.email,
+            id: user.id,
+            time: Date.now(),
     },
     'hello',
     { expiresIn: '8h' }
@@ -35,7 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader(
         'Set-Cookie',
         cookie.serialize('TRAX_ACCESS_TOKEN', token, {
-            httoOnly: true,
+            httpOnly: true,
             maxAge: 8 * 60 * 60,
             path: '/',
             sameSite: 'lax',
