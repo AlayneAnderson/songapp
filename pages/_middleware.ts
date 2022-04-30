@@ -1,4 +1,5 @@
-
+//Created to make user signin before they access the homepage. Redirects
+//User until they signin. 
 import { NextResponse } from 'next/server'
 
 const signedinPages = ['/', '/playlist', '/library']
