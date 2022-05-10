@@ -18,6 +18,7 @@ import {
     MdFavorite
 } from 'react-icons/md'
 import { usePlaylist } from '../lib/hooks'
+import { Key, ReactChild, ReactFragment, ReactPortal } from 'react'
 
 const navMenu = [
     {
@@ -111,7 +112,7 @@ const Sidebar = () => {
                 <Divider bg="gray.800" />
                 <Box height="66%" overflowY="auto" paddingY="20px">
                     <List spacing={2}>
-                        {playlists.map((playlist) =>(
+                        {playlists.map((playlist: { id: Key; name: boolean | ReactChild | ReactFragment | ReactPortal }) =>(
                             <ListItem paddingX="20px" key={playlist.id}>
                                 <LinkBox>
                                     <NextLink 
