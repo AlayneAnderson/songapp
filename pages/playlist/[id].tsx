@@ -3,7 +3,7 @@ import prisma from "../../lib/prisma";
 import { InferGetServerSidePropsType } from "next";
 import GradientLayout from '../../components/gradientLayout';
 import SongTable from '../../components/songsTable';
-import playlists from '../api/playlists';
+import playlists from '../api/playlist';
 
 const getBGColor = (id) => {
     const colors = [
