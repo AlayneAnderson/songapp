@@ -2,6 +2,8 @@ import {validateToken} from '../../lib/auth'
 import prisma from "../../lib/prisma";
 import { InferGetServerSidePropsType } from "next";
 import GradientLayout from '../../components/gradientLayout';
+import SongTable from '../../components/songsTable';
+import playlists from '../api/playlists';
 
 const getBGColor = (id) => {
     const colors = [
@@ -29,7 +31,7 @@ const Playlist = ({ playlist }: InferGetServerSidePropsType<typeof getServerSide
             description={`${playlist.songs.length} songs`}
             image={`https://picsum.photos/400?random=${playlist.id}`}
         >
-            <div>dfd</div>
+            <SongTable songs={playlist.songs}/>
         </GradientLayout>
     )
 }
