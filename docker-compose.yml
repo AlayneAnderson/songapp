@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:12
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      # Use a different port to not collide with
+      # locally installed postgres
+      - 6432:5432
